@@ -1,0 +1,19 @@
+{
+  "name": "my-claude-stuff",
+  "metadata": {
+    "description": "Experimental collection of Claude Code plugins, agents, prompts, and skills",
+    "version": "0.1.1"
+  },
+  "owner": {
+    "name": "Aleksandr Tarankov",
+    "email": "a.tarankoff@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "shift-left-dev",
+      "source": "./",
+      "description": "Shift-Left Testing approach for development",
+      "version": "0.1.1"
+    }
+  ]
+}
