@@ -1,6 +1,5 @@
 ---
 description: "Implement: execute the next unfinished implementation stage from the approved plan"
-argument-hint: "Provide the task short-name to locate the implementation plan"
 ---
 
 # Stage 04 — Implement
@@ -8,6 +7,8 @@ argument-hint: "Provide the task short-name to locate the implementation plan"
 Execute the remaining implementation stages from the approved plan one stage at a time, committing each stage as it completes. Once all stages are done, deploy the changes to the dev environment for testing, then report the outcome for a single human review at the end.
 
 **Input**: The approved implementation plan and task list from `my-specs/tasks/<short-name>/`. The user provides the `<short-name>` or the path to the task directory.
+
+**Argument:** `$ARGUMENTS` — the task `<short-name>` (or the path to the task directory) used throughout this command.
 
 ---
 
@@ -64,7 +65,7 @@ If all stages are already complete, skip to Step 3 (deploy) and then the final c
 
 Work through the unfinished stages **sequentially, looping until none remain**. There is **no human review between stages** — only at the very end (Step 4). For each unfinished stage, repeat 2a → 2b → 2c, then move to the next stage:
 
-**2a — Execute the stage.** Use the `Task` tool with `subagent_type: dev` to delegate to the Senior Full-Stack Developer subagent. It's assumed to apply the `dev-implement` skill.
+**2a — Execute the stage.** Use the `subagent` tool with agent ID `dev` to delegate to the Senior Full-Stack Developer subagent. Instruct it to load the `dev-implement` skill (call the `skill` tool with id `dev-implement`).
 
 Pass the implementation plan (`03-implementation-plan.md`), current progress state (`04-tasks-progress.md`), and the stage to be implemented (`Stage N`):
 ```

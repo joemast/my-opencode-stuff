@@ -1,6 +1,5 @@
 ---
 description: "Plan: compile the final implementation plan and executable task list from approved drafts"
-argument-hint: "Provide the task short-name to locate the planning artifacts"
 ---
 
 # Stage 03 — Plan
@@ -8,6 +7,8 @@ argument-hint: "Provide the task short-name to locate the planning artifacts"
 Compile the approved planning drafts into the final implementation plan with an executable task list, then verify the plan is ready for implementation.
 
 **Input**: All artifacts from previous stages in `my-specs/tasks/<short-name>/`. The user provides the `<short-name>` or the path to the task directory.
+
+**Argument:** `$ARGUMENTS` — the task `<short-name>` (or the path to the task directory) used throughout this command.
 
 ---
 
@@ -54,7 +55,7 @@ Work through these steps sequentially. Present all results to the user for revie
 
 ### Step 1 — Compile the Final Implementation Plan and Tasks
 
-Use the `Task` tool with `subagent_type: dev` to delegate to the Senior Full-Stack Developer subagent. It's assumed to apply the `dev-prepare-implementation-plan` skill.
+Use the `subagent` tool with agent ID `dev` to delegate to the Senior Full-Stack Developer subagent. Instruct it to load the `dev-prepare-implementation-plan` skill (call the `skill` tool with id `dev-prepare-implementation-plan`).
 
 Pass all planning artifacts and ask:
 ```
@@ -69,7 +70,7 @@ Append a `## Summary` section at the bottom of each file with 3–5 bullet point
 
 ### Step 2 — Verify the Implementation Plan
 
-Use the `Task` tool with `subagent_type: qa` to delegate to the QA Expert subagent. It's assumed to apply the `qa-check-implementation-plan` skill.
+Use the `subagent` tool with agent ID `qa` to delegate to the QA Expert subagent. Instruct it to load the `qa-check-implementation-plan` skill (call the `skill` tool with id `qa-check-implementation-plan`).
 
 Pass the final plan, task list, and all upstream planning artifacts:
 ```

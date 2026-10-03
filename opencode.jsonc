@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json"
+
+  // Optional: register the Atlassian MCP server used by the `pm` subagent and by
+  // stages 01 (Kickoff) and 06 (Polish). Uncomment and set the endpoint, then make
+  // sure the server name here matches the `atlassian_*` permission in
+  // `.opencode/agents/pm.md`.
+  //
+  // "mcp": {
+  //   "servers": {
+  //     "atlassian": {
+  //       "type": "remote",
+  //       "url": "https://<your-atlassian-mcp-endpoint>/mcp"
+  //     }
+  //   }
+  // }
+}
