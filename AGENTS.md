@@ -115,6 +115,11 @@ Stage-04 has a unique pattern: `04-tasks-progress.md` is created by **copying**
   `model`, `subagent`); subagents declare `description`, `mode: subagent`, and
   `permissions`; skills declare `name` + `description`. The `description` is what
   OpenCode uses to surface the item — keep it specific and trigger-oriented.
+- **Permission rules are last-match-wins.** In an agent's `permissions` list,
+  place the broad default rule `{ action: "*", resource: "*", effect: "deny" }`
+  **first**, then the specific `allow` rules (e.g. `read`, `edit`, `skill`). A
+  trailing wildcard `deny` overrides every earlier `allow`, silently leaving the
+  agent with **no tools** — the subagent then completes without doing any work.
 - **Short-name derivation.** New tasks get a kebab-case `<short-name>` derived from
   the title, prefixed with the Jira key when present (e.g.
   `JIRA-123-add-two-factor-auth`). Confirm with the user before creating the

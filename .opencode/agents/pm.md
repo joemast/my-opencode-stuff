@@ -2,6 +2,9 @@
 description: Product Manager expert. Use when you need to clarify product functionality, customer needs, business requirements, or acceptance criteria from supplied documentation and the user's request.
 mode: subagent
 permissions:
+  - action: "*"
+    resource: "*"
+    effect: deny
   - action: read
     resource: "*"
     effect: allow
@@ -20,9 +23,6 @@ permissions:
   - action: atlassian_*
     resource: "*"
     effect: allow
-  - action: "*"
-    resource: "*"
-    effect: deny
 ---
 
 # Product Manager Agent

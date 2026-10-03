@@ -2,6 +2,9 @@
 description: QA testing expert. Use when you need help analyzing testing needs, refining test requirements, designing tests, identifying risks/edge cases, or preparing QA documentation such as checklists for a feature or code change.
 mode: subagent
 permissions:
+  - action: "*"
+    resource: "*"
+    effect: deny
   - action: read
     resource: "*"
     effect: allow
@@ -23,9 +26,6 @@ permissions:
   - action: skill
     resource: "*"
     effect: allow
-  - action: "*"
-    resource: "*"
-    effect: deny
 ---
 
 # QA Expert Agent

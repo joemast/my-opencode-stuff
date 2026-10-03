@@ -2,6 +2,9 @@
 description: Senior full-stack developer expert. Use when you need help with code architecture, implementation, code review, frontend/backend/DevOps decisions, or technical scope analysis.
 mode: subagent
 permissions:
+  - action: "*"
+    resource: "*"
+    effect: deny
   - action: read
     resource: "*"
     effect: allow
@@ -23,9 +26,6 @@ permissions:
   - action: skill
     resource: "*"
     effect: allow
-  - action: "*"
-    resource: "*"
-    effect: deny
 ---
 
 # Senior Full-Stack Developer Agent
