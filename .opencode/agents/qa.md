@@ -1,8 +1,31 @@
 ---
-name: qa
 description: QA testing expert. Use when you need help analyzing testing needs, refining test requirements, designing tests, identifying risks/edge cases, or preparing QA documentation such as checklists for a feature or code change.
-tools: Read, Grep, Glob, Edit, Write, TodoWrite, Bash, WebFetch
-model: sonnet
+mode: subagent
+permissions:
+  - action: read
+    resource: "*"
+    effect: allow
+  - action: glob
+    resource: "*"
+    effect: allow
+  - action: grep
+    resource: "*"
+    effect: allow
+  - action: edit
+    resource: "*"
+    effect: allow
+  - action: shell
+    resource: "*"
+    effect: allow
+  - action: webfetch
+    resource: "*"
+    effect: allow
+  - action: skill
+    resource: "*"
+    effect: allow
+  - action: "*"
+    resource: "*"
+    effect: deny
 ---
 
 # QA Expert Agent

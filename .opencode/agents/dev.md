@@ -1,8 +1,31 @@
 ---
-name: dev
 description: Senior full-stack developer expert. Use when you need help with code architecture, implementation, code review, frontend/backend/DevOps decisions, or technical scope analysis.
-tools: Read, Grep, Glob, Edit, Write, TodoWrite, Bash, WebFetch
-model: sonnet
+mode: subagent
+permissions:
+  - action: read
+    resource: "*"
+    effect: allow
+  - action: glob
+    resource: "*"
+    effect: allow
+  - action: grep
+    resource: "*"
+    effect: allow
+  - action: edit
+    resource: "*"
+    effect: allow
+  - action: shell
+    resource: "*"
+    effect: allow
+  - action: webfetch
+    resource: "*"
+    effect: allow
+  - action: skill
+    resource: "*"
+    effect: allow
+  - action: "*"
+    resource: "*"
+    effect: deny
 ---
 
 # Senior Full-Stack Developer Agent

@@ -1,6 +1,5 @@
 ---
 description: "Focus: create draft implementation, testing, and automation plans, then run a consistency check"
-argument-hint: "Provide the task short-name to locate the kickoff artifacts"
 ---
 
 # Stage 02 — Focus
@@ -8,6 +7,8 @@ argument-hint: "Provide the task short-name to locate the kickoff artifacts"
 This stage is to focus on preparing for the implementation, basing on the refined requirements. Build draft plans for implementation, testing, and test automation, then verify that the drafts are consistent before the final plan is compiled.
 
 **Input**: Kickoff artifacts from `my-specs/tasks/<short-name>/` produced at the previous stage. The user provides the `<short-name>` or the path to the task directory.
+
+**Argument:** `$ARGUMENTS` — the task `<short-name>` (or the path to the task directory) used throughout this command.
 
 ---
 
@@ -45,7 +46,7 @@ Work through these steps sequentially. Present all results to the user for revie
 
 ### Step 1 — Development Plan Draft
 
-Use the `Task` tool with `subagent_type: dev` to delegate to the Senior Full-Stack Developer subagent. It's assumed to apply the `dev-prepare-development-plan` skill.
+Use the `subagent` tool with agent ID `dev` to delegate to the Senior Full-Stack Developer subagent. Instruct it to load the `dev-prepare-development-plan` skill (call the `skill` tool with id `dev-prepare-development-plan`).
 
 Pass all kickoff artifacts together with the request:
 ```
@@ -58,7 +59,7 @@ Append a `## Summary` section at the bottom of the file with 3–5 bullet points
 
 ### Step 2 — Testing Plan Draft
 
-Use the `Task` tool with `subagent_type: qa` to delegate to the QA Expert subagent. It's assumed to apply the `qa-prepare-test-plan` skill.
+Use the `subagent` tool with agent ID `qa` to delegate to the QA Expert subagent. Instruct it to load the `qa-prepare-test-plan` skill (call the `skill` tool with id `qa-prepare-test-plan`).
 
 Pass all kickoff artifacts plus the development plan along to the request:
 ```
@@ -71,7 +72,7 @@ Append a `## Summary` section at the bottom of the file with 3–5 bullet points
 
 ### Step 3 — Test Automation Plan
 
-Use the `Task` tool with `subagent_type: dev` to delegate to the Senior Full-Stack Developer subagent. It's assumed to apply the `dev-prepare-automation-plan` skill.
+Use the `subagent` tool with agent ID `dev` to delegate to the Senior Full-Stack Developer subagent. Instruct it to load the `dev-prepare-automation-plan` skill (call the `skill` tool with id `dev-prepare-automation-plan`).
 
 Pass the kickoff artifacts, development plan, and testing plan along to the request:
 ```
@@ -84,7 +85,7 @@ Append a `## Summary` section at the bottom of the file with 3–5 bullet points
 
 ### Step 4 — Plans Consistency Check
 
-Use the `Task` tool with `subagent_type: qa` to delegate to the QA Expert subagent. It's assumed to apply the `qa-check-plans-consistency` skill.
+Use the `subagent` tool with agent ID `qa` to delegate to the QA Expert subagent. Instruct it to load the `qa-check-plans-consistency` skill (call the `skill` tool with id `qa-check-plans-consistency`).
 
 Pass all artifacts produced so far:
 ```

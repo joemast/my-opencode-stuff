@@ -1,6 +1,5 @@
 ---
 description: "Prepare to kick-off: explore a business idea, define implementation scope, run kickoff checklist, and formulate acceptance criteria"
-argument-hint: "Describe the business idea or paste a Jira issue URL"
 ---
 
 # Stage 01 — Kickoff
@@ -8,6 +7,8 @@ argument-hint: "Describe the business idea or paste a Jira issue URL"
 Explore and collect the details of the business idea and its implementation. Produce structured kickoff artifacts in `my-specs/tasks/<short-name>/`.
 
 **Input**: A business idea, feature request, improvement requirement, or a Jira issue URL. Additional context may be attached as files.
+
+**Argument:** `$ARGUMENTS` — the business idea or Jira issue URL to kick off.
 
 ---
 
@@ -31,11 +32,11 @@ flowchart TD
 
 ## Steps
 
-Run Steps 1a and 1b in parallel by issuing two `Task` tool calls in a **single message** (one with `subagent_type: pm`, one with `subagent_type: dev`). Once both complete, proceed to Step 2. Present all results to the user for review after completing all steps.
+Run Steps 1a and 1b in parallel by issuing two `subagent` tool calls in **a single assistant turn** (one with agent ID `pm`, one with agent ID `dev`). Once both complete, proceed to Step 2. Present all results to the user for review after completing all steps.
 
 ### Step 1a — Identify the Business Idea and Acceptance Criteria
 
-Use the `Task` tool with `subagent_type: pm` to delegate to the Product Manager subagent. It's assumed to apply the `pm-prepare-task-requirements` skill.
+Use the `subagent` tool with agent ID `pm` to delegate to the Product Manager subagent. Instruct it to load the `pm-prepare-task-requirements` skill (call the `skill` tool with id `pm-prepare-task-requirements`).
 
 Pass all information the user gave you, including any attached files, URLs, etc., along with the request:
 ```
@@ -49,7 +50,7 @@ Append a `## Summary` section at the bottom of the file with 3–5 bullet points
 
 ### Step 1b — Define Implementation Scope
 
-Use the `Task` tool with `subagent_type: dev` to delegate to the Senior Full-Stack Developer subagent. It's assumed to apply the `dev-explore-codebase` skill.
+Use the `subagent` tool with agent ID `dev` to delegate to the Senior Full-Stack Developer subagent. Instruct it to load the `dev-explore-codebase` skill (call the `skill` tool with id `dev-explore-codebase`).
 
 Pass all information the user gave you, including any attached files, URLs, etc., along with the request:
 ```
@@ -78,7 +79,7 @@ Append a `## Summary` section at the bottom of the file with 3–5 bullet points
 
 ### Step 2 — Kickoff Checklist
 
-Use the `Task` tool with `subagent_type: qa` to delegate to the QA Expert subagent. It's assumed to apply the `qa-check-definition-of-ready` skill.
+Use the `subagent` tool with agent ID `qa` to delegate to the QA Expert subagent. Instruct it to load the `qa-check-definition-of-ready` skill (call the `skill` tool with id `qa-check-definition-of-ready`).
 
 Pass the business idea and implementation scope artifacts together:
 ```

@@ -1,8 +1,28 @@
 ---
-name: pm
 description: Product Manager expert. Use when you need to clarify product functionality, customer needs, business requirements, or acceptance criteria from supplied documentation and the user's request.
-tools: Read, Grep, Glob, Edit, Write, TodoWrite, mcp__claude_ai_Atlassian__getAccessibleAtlassianResources, mcp__claude_ai_Atlassian__getJiraIssue, mcp__claude_ai_Atlassian__getJiraIssueRemoteIssueLinks, mcp__claude_ai_Atlassian__searchJiraIssuesUsingJql, mcp__claude_ai_Atlassian__getConfluencePage, mcp__claude_ai_Atlassian__fetch
-model: sonnet
+mode: subagent
+permissions:
+  - action: read
+    resource: "*"
+    effect: allow
+  - action: glob
+    resource: "*"
+    effect: allow
+  - action: grep
+    resource: "*"
+    effect: allow
+  - action: edit
+    resource: "*"
+    effect: allow
+  - action: skill
+    resource: "*"
+    effect: allow
+  - action: atlassian_*
+    resource: "*"
+    effect: allow
+  - action: "*"
+    resource: "*"
+    effect: deny
 ---
 
 # Product Manager Agent

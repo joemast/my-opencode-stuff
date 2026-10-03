@@ -1,6 +1,5 @@
 ---
 description: "Checklist: run the appropriate QA checklist for the current or requested workflow stage"
-argument-hint: "Provide the task short-name and optionally specify which checklist to run"
 ---
 
 # Checklist Dispatcher
@@ -8,6 +7,8 @@ argument-hint: "Provide the task short-name and optionally specify which checkli
 Run the appropriate QA checklist based on the current task artifacts or a specific user request. This command detects which artifacts exist and selects the right checklist, or runs a specific one when the user asks.
 
 **Input**: The `<short-name>` of the task or the path to the task directory. Optionally, the user can specify which checklist to run (DoR, plans-consistency, implementation-plan, implementation-result, or DoD).
+
+**Argument:** `$ARGUMENTS` — the task `<short-name>` (or the path to the task directory), optionally followed by the checklist to run.
 
 ---
 
@@ -62,7 +63,7 @@ flowchart TD
 
 ### Step 2 — Run the Selected Checklist
 
-Use the `Task` tool with `subagent_type: qa` to delegate to the QA Expert subagent. Instruct it to apply the appropriate checklist skill. Pass all relevant artifacts for the selected checklist.
+Use the `subagent` tool with agent ID `qa` to delegate to the QA Expert subagent. Instruct it to load the appropriate checklist skill (call the `skill` tool with the matching skill id). Pass all relevant artifacts for the selected checklist.
 
 **Definition of Ready:**
 ```

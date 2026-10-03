@@ -1,6 +1,5 @@
 ---
 description: "Review: collect developer code review and QA implementation-result feedback"
-argument-hint: "Provide the task short-name to locate the implementation artifacts"
 ---
 
 # Stage 05 — Review
@@ -8,6 +7,8 @@ argument-hint: "Provide the task short-name to locate the implementation artifac
 Run a developer code review and a QA implementation-result check on the delivered work, then present consolidated findings to the user.
 
 **Input**: Implementation artifacts from `my-specs/tasks/<short-name>/`. The user provides the `<short-name>` or the path to the task directory.
+
+**Argument:** `$ARGUMENTS` — the task `<short-name>` (or the path to the task directory) used throughout this command.
 
 ---
 
@@ -46,7 +47,7 @@ flowchart TD
 
 ### Step 1 — Developer Code Review
 
-Use the `Task` tool with `subagent_type: dev` to delegate to the Senior Full-Stack Developer subagent. It's assumed to apply the `dev-code-review` skill.
+Use the `subagent` tool with agent ID `dev` to delegate to the Senior Full-Stack Developer subagent. Instruct it to load the `dev-code-review` skill (call the `skill` tool with id `dev-code-review`).
 
 Pass the implementation plan and code evidence (current branch, changes, or PR diff usually available via Git):
 ```
@@ -59,7 +60,7 @@ Append a `## Summary` section at the bottom of the file with 3–5 bullet points
 
 ### Step 2 — QA Implementation Result Check
 
-Use the `Task` tool with `subagent_type: qa` to delegate to the QA Expert subagent. It's assumed to apply the `qa-check-implementation-result` skill.
+Use the `subagent` tool with agent ID `qa` to delegate to the QA Expert subagent. Instruct it to load the `qa-check-implementation-result` skill (call the `skill` tool with id `qa-check-implementation-result`).
 
 Pass the implementation plan with task list, progress, and code evidence (current branch, changes, or PR diff usually available via Git):
 ```

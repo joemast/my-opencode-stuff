@@ -1,11 +1,12 @@
 ---
 description: "Shift-Left Testing workflow: routes to the right stage based on current progress"
-argument-hint: "Provide the task short-name or path to the task directory. For new task, provide a Jira issue URL or describe a new business idea"
 ---
 
 # Shift-Left Testing — Workflow Entrypoint
 
 This is the umbrella command for the Shift-Left Testing development workflow. It detects the current progress of a task and routes you to the appropriate stage, or starts a new task from scratch.
+
+**Argument:** `$ARGUMENTS` — a task short-name, a Jira issue URL, or a description of a new business idea. If it is empty, ask the user for one of these before proceeding.
 
 ---
 

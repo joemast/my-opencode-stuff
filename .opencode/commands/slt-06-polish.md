@@ -1,6 +1,5 @@
 ---
 description: "Polish: address review follow-ups, finish remaining work, and confirm the feature is done"
-argument-hint: "Provide the task short-name to locate the review artifacts"
 ---
 
 # Stage 06 — Polish
@@ -8,6 +7,8 @@ argument-hint: "Provide the task short-name to locate the review artifacts"
 Address review follow-ups, complete any remaining work, and run the Definition of Done checklist to confirm the feature is ready to close.
 
 **Input**: All task artifacts from `my-specs/tasks/<short-name>/`. The user provides the `<short-name>` or the path to the task directory.
+
+**Argument:** `$ARGUMENTS` — the task `<short-name>` (or the path to the task directory) used throughout this command.
 
 ---
 
@@ -59,7 +60,7 @@ Present the triage to the user.
 
 ### Step 2 — Address Blocking Items (if any)
 
-If there are blocking findings, use the `Task` tool with `subagent_type: dev` to delegate to the Senior Full-Stack Developer subagent. It's assumed to apply the `dev-implement` skill.
+If there are blocking findings, use the `subagent` tool with agent ID `dev` to delegate to the Senior Full-Stack Developer subagent. Instruct it to load the `dev-implement` skill (call the `skill` tool with id `dev-implement`).
 
 ```
 Address the following blocking review findings.
@@ -79,7 +80,7 @@ Update `05-review-summary.md` to reflect the final state of all tasks: set `[x]`
 
 ### Step 4 — Definition of Done Check
 
-Use the `Task` tool with `subagent_type: qa` to delegate to the QA Expert subagent. It's assumed to apply the `qa-check-definition-of-done` skill.
+Use the `subagent` tool with agent ID `qa` to delegate to the QA Expert subagent. Instruct it to load the `qa-check-definition-of-done` skill (call the `skill` tool with id `qa-check-definition-of-done`).
 
 Pass the implementation plan (`03-implementation-plan.md`), final task status (`04-tasks-progress.md`), review artifacts (`05-review-summary.md`), and any evidence about PR state, documentation, or remaining work:
 ```
